@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * insert_node - a function that inserts a number into a sorted singly linked list
+ * insert_node - function that insert a number into a sorted singly linked list
  *
  * @head: input pointer of pointer
  * @number: input number
@@ -11,29 +11,27 @@
  * Return: insert node
  */
 
-listint_t *insert_node(listint_t **head, int number)
+istint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *node = *head, *n_node = malloc(sizeof(listint_t));
+	listint_t *node = *head, *new;
 
-	if (!n_node)
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
 		return (NULL);
-	n_node->n = number;
-	n_node = NULL;
+	new->n = number;
 
-	if (!node || n_node->n < node->n)
+	if (node == NULL || node->n >= number)
 	{
-		n_node->next = node;
-		return (*head = n_node);
+		new->next = node;
+		*head = new;
+		return (new);
 	}
-	while (node)
-	{
-		if (!node->next || n_node->n < node->next->n)
-		{
-			n_node->next = node->next;
-			n_node->next = n_node;
-			return (n_node);
-		}
+
+	while (node && node->next && node->next->n < number)
 		node = node->next;
-	}
-	return (NULL);
+
+	new->next = node->next;
+	node->next = new;
+
+	return (new);
 }
