@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""define classes for a singly linked list"""
 
 
 class Node:
