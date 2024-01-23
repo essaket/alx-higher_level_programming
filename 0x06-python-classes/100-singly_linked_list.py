@@ -38,7 +38,6 @@ class Node:
 class SinglyLinkedList:
     """Defines a singly linked list"""
 
-
     def __init__(self):
         """An object constructor method."""
         self.__head = None
