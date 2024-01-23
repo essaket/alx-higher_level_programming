@@ -35,6 +35,7 @@ class Node:
         self.__next_node = value
 
 
+
 class SinglyLinkedList:
     """Defines a singly linked list"""
 
