@@ -4,11 +4,11 @@ Write an empty class Rectangle that defines a rectangle
 """
 
 
-
 class Rectangle:
-    """Defines an empty Rectangle"""
-     def __init__(self, width=0, height=0):
-        """Initialize the Rectangle"""
+    """defines an empty Rectangle"""
+
+    def __init__(self, width=0, height=0):
+        """Initializes the Rectangle"""
         self.__width = width
         self.__height = height
 
