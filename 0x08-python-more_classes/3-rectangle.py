@@ -52,12 +52,11 @@ class Rectangle:
 
     def __str__(self):
         """retrns a rectangle with the character '#'"""
-        if self.__width == 0 or self.__height == 0:
-            return ("")
-        
-        rect = []
+        if self.__height == 0 or self.__width == 0:
+            return ""
+        rec_str = ""
         for i in range(self.__height):
-            [rect.append('#') for j in range(self.__width)]
-            if i != self.__height - 1:
-                rect.append("\n")
-        return ("".join(rect))
+            for j in range(self.__width):
+                rec_str += "#"
+            rec_str += "\n"
+        return rec_str[:-1]
