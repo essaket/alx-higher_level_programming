@@ -53,9 +53,9 @@ class Rectangle:
     def __str__(self):
         """retrns a rectangle with the character '#'"""
         rec_str = ""
-        if self.__width !=0 and self.__height != 0:
+        if self.__width !=0 or self.__height != 0:
             for i in range(self.__height):
-            for j in range(self.__width):
-                rec_str += "#"
-            rec_str += "\n"
+                for j in range(self.__width):
+                    rec_str += "#"
+                    rec_str += "\n"
         return rec_str
