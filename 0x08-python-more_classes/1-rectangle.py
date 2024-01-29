@@ -6,20 +6,38 @@ Write an empty class Rectangle that defines a rectangle
 
 class Rectangle:
     """defines an empty Rectangle"""
-
     def __init__(self, width=0, height=0):
-        """Initializes the Rectangle"""
+        """An object constructor method.
+
+        Initiatilizes Rectangle with width and height.
+
+        Args:
+            width: An integer representing object width.
+                  Has a default value of 0.
+            height: An integer representing object height.
+                  Has a default value of 0.
+        """
         self.__width = width
         self.__height = height
 
     @property
     def width(self):
-        """Gets the width private attribute value"""
+        """Gets the width private attribute value.
+
+        Returns:
+            The width private attribute
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Sets the width private attribute value"""
+        """Sets the width private attribute value.
+
+        Validates the assignment of the width private attribute.
+
+        Arg:
+            value: the value to be set
+        """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -28,12 +46,22 @@ class Rectangle:
 
     @property
     def height(self):
-        """Gets the height private attribute value"""
+        """Gets the height private attribute value.
+
+        Returns:
+            The height private attribute
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Sets the height private attribute value"""
+        """Sets the height private attribute value.
+
+        Validates the assignment of the height private attribute.
+
+        Arg:
+            value: the value to be set
+        """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
