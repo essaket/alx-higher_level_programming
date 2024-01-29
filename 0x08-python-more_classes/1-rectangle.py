@@ -5,7 +5,13 @@ Write an empty class Rectangle that defines a rectangle
 
 
 class Rectangle:
-    """defines an empty Rectangle"""
+    """Defines the blueprint of a rectangle.
+
+    Attribute:
+        width: An integer indicating the width of the rectangle object.
+        height: An integer indicating the height of the rectangle object.
+    """
+
     def __init__(self, width=0, height=0):
         """An object constructor method.
 
