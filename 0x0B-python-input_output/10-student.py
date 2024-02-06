@@ -22,5 +22,5 @@ class Student:
         new_dict = dict()
         for y, v in self.__dict__.items():
             if y in attrs:
-                new_dict[x] = v
+                new_dict[y] = v
         return new_dict
