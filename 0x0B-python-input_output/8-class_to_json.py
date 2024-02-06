@@ -3,5 +3,6 @@
 
 
 def def class_to_json(obj):
-    """Method returns the dictionary represntation of a simple data structure"""
+    """Method returns the dictionary represntation
+    of a simple data structure"""
     return obj.__dict__
