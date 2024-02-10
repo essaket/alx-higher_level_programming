@@ -3,6 +3,8 @@
 import json
 from models.rectangle import Rectangle
 from models.square import Square
+import os
+import csv
 
 
 class Base:
@@ -27,6 +29,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """Write the JSON serialization of a list of objects to a file"""
         with open(cls.__name__ + ".json", "w") as file:
             if list_objs is None:
                 file.write("[]")
@@ -65,4 +68,37 @@ class Base:
                     l.append(cls.create(**d))
         return l
 
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Write CSV serialization of a list of objects to a file"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", newline="") as csvf:
+            if list_objs is None or list_objs == []:
+                csvf.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fields = ["id", "width", "height", "x", "y"]
+                else:
+                    fields = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvf, fieldnames=fields)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of classes instantiated from a CSV file"""
+        ret = []
+        with open('{}.csv'.format(cls.__name__), 'r', newline='',
+                encoding='utf-8') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                row = [int(r) for r in row]
+                if cls.__name__ == 'Rectangle':
+                    d = {"id": row[0], "width": row[1], "height": row[2],
+                         "x": row[3], "y": row[4]}
+                else:
+                    d = {"id": row[0], "size": row[1],
+                         "x": row[2], "y": row[3]}
+                ret.append(cls.create(**d))
+        return ret
 
