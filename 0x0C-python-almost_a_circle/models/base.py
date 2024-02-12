@@ -41,3 +41,15 @@ class Base:
         if json_string is None or not json_string:
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Returns an instance with all attributes already set"""
+        if cls.__name__ == 'Rectangle':
+            new_dict = cls(1, 1)
+        elif cls.__name__ == 'Square':
+            new_dict = cls(1)
+        else:
+            new_dict = None
+        new_dict.update(**dictionary)
+        return new_dict
