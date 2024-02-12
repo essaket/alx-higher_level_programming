@@ -56,13 +56,9 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        '''Loads string from file and unjsonifies.'''
-        from os import path
-        l = []
-        list_dicts = []
-        if os.path.exists(cls.__name__ + ".json"):
-            with open(cls.__name__ + ".json", 'r') as file:
-                list_dicts = cls.from_json_string(file.read())
-                for d in list_dicts:
-                    l.append(cls.create(**d))
-        return l
+        """Returns a list of instances"""
+        file = "{}.json".format(cls.__name__)
+        if not path.isfile(file):
+            return []
+        with open(file, "r", encoding="utf-8") as f:
+            return [cls.create(**d) for d in cls.from_json_string(f.read())]
