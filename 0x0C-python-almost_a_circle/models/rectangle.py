@@ -79,3 +79,8 @@ class Rectangle(Base):
             for j in range(0, self.__width):
                 print("#", end="")
             print()
+
+    def __str__(self):
+        """Returns info string of the rectanglr"""
+        return '[Rectangle] ({}) {}/{} - {}/{}'.\
+            format(self.id, self.x, self.y, self.width, self.height)
