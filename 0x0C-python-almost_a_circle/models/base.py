@@ -86,17 +86,13 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """Return a list of classes instantiated from a CSV file"""
-        ret = []
-        with open('{}.csv'.format(cls.__name__), 'r', newline='',
-                encoding='utf-8') as f:
-            reader = csv.reader(f)
-            for row in reader:
-                row = [int(r) for r in row]
-                if cls.__name__ == 'Rectangle':
-                    d = {"id": row[0], "width": row[1], "height": row[2],
-                         "x": row[3], "y": row[4]}
-                else:
-                    d = {"id": row[0], "size": row[1],
-                         "x": row[2], "y": row[3]}
-                ret.append(cls.create(**d))
-        return ret
+        filename = cls.__name__ + ".csv"
+        with open(filename, "r", newline="") as csvfile:
+            if cls.__name__ == "Rectangle":
+                fieldnames = ["id", "width", "height", "x", "y"]
+            else:
+                fieldnames = ["id", "size", "x", "y"]
+            list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
+            list_dicts = [dict([k, int(v)] for k, v in d.items()]
+                    for d in list_dicts]
+            return [cls.create(**d) for d in list_dicts]
