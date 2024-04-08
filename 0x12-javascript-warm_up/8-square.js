@@ -4,7 +4,7 @@ if (isNaN(Number(process.argv[2]);
 } else {
   let x = 0;
   while (x < Number(process.argv[2]) {
-     console.log('X'.repeat(size));
+     console.log('X'.repeat(Number(process.argv[2]));
      x++;
   }
 }
