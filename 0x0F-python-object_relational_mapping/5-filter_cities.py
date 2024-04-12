@@ -14,9 +14,9 @@ if __name__ == "__main__":
     c = db.cursor()
 
     c.execute("SELECT cities.name FROM cities\
-            JOIN states ON cities.state_id = states.id\
-            AND states.name = '{:s}'\
-            ORDER BY cities.id ASC".format(sys.argv[4]))
+                    JOIN states ON cities.state_id = states.id\
+                    AND states.name = '{:s}'\
+                    ORDER BY cities.id ASC".format(sys.argv[4]))
 
     l = list(x[0] for x in c.fetchall())
     print(*l, sep=", ")
