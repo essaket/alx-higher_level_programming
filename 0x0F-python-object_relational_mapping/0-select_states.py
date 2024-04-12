@@ -11,11 +11,12 @@ if __name__ == "__main__":
                          passwd=sys.argv[2],
                          db=sys.argv[3])
 
-    curs = db.cursor()
-    curs.execute("SELECT * FROM states ORDER BY id ASC")
-    fetch = curs.fetchall()
-     for x in fetch:
-        print(x)
+    cur = db.cursor()
 
-    curs.close()
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
+    rows = cur.fetchall()
+    for i in rows:
+        print(i)
+
+    cur.close()
     db.close()
