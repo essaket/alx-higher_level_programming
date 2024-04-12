@@ -18,12 +18,8 @@ if __name__ == "__main__":
             AND states.name = '{:s}'\
             ORDER BY cities.id ASC".format(sys.argv[4]))
 
-    l = []
-
-    for x in c.fetchall():
-        l.append(x[0])
-
-    print(", ".join(l))
+    l = list(x[0] for x in c.fetchall())
+    print(*l, sep=", ")
 
     c.close()
     db.close()
