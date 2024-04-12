@@ -17,7 +17,8 @@ if __name__ == "__main__":
             JOIN states ON cities.state_id = states.id\
             AND states.name = '{:s}'\
             ORDER BY cities.id ASC".format(sys.argv[4]))
-    [print(x) for x in c.fetchall()]
+    [l.append(x[0]) for x in c.fetchall()]
+    print(", ".join(l))
 
     c.close()
     db.close()
