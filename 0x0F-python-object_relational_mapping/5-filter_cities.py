@@ -13,9 +13,10 @@ if __name__ == "__main__":
 
     c = db.cursor()
 
-    c.execute("SELECT cities.name FROM
-                cities INNER JOIN states ON states.id=cities.state_id
-                WHERE states.name=%s", (sys.argv[4], ))
+    c.execute("SELECT cities.name FROM cities\
+            JOIN states ON cities.state_id = states.id\
+            AND states.name = '{:s}'\
+            ORDER BY cities.id ASC".format(sys.argv[4]))
     [print(x) for x in c.fetchall()]
 
     c.close()
