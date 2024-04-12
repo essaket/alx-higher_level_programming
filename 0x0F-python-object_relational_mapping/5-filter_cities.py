@@ -19,6 +19,7 @@ if __name__ == "__main__":
             ORDER BY cities.id ASC".format(sys.argv[4]))
 
     l = []
+
     for x in c.fetchall():
         l.append(x[0])
 
