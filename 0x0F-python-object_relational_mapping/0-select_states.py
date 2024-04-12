@@ -12,8 +12,7 @@ if __name__ == "__main__":
                         db=sys.argv[3])
 
     curs = db.cursor()
-    
-    curs.execute("SELECT * FROM states ORDER BY id ASC")
+     curs.execute("SELECT * FROM states ORDER BY id ASC")
     fetch = curs.fetchall()
      for x in fetch:
         print(x)
