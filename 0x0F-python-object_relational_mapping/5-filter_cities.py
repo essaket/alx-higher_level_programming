@@ -18,8 +18,7 @@ if __name__ == "__main__":
                     AND states.name = '{:s}'\
                     ORDER BY cities.id ASC".format(sys.argv[4]))
 
-    l = list(x[0] for x in c.fetchall())
-    print(*l, sep=", ")
+    print(", ".join([x[2] for x in c.fetchall() if x[4] == sys.argv[4]]))
 
     c.close()
     db.close()
