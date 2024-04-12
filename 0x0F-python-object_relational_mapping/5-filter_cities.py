@@ -17,7 +17,10 @@ if __name__ == "__main__":
             JOIN states ON cities.state_id = states.id\
             AND states.name = '{:s}'\
             ORDER BY cities.id ASC".format(sys.argv[4]))
-    [l.append(x[0]) for x in c.fetchall()]
+    l = []
+    for x in c.fetchall():
+        l.append(x[0])
+
     print(", ".join(l))
 
     c.close()
