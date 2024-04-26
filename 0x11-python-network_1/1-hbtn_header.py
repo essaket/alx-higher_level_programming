@@ -7,4 +7,5 @@ import sys
 
 if __name__ == "__main__":
     with request.urlopen(argv[1]) as x:
-        print(dict(x.headers).get("X-Request-Id"))
+        value = x.headers.get('X-Request-Id')
+        print(value)
